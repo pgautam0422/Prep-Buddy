@@ -114,3 +114,17 @@ export function sendChatMessage(question) {
     body: { question },
   });
 }
+
+export function generateQuiz(payload) {
+  return apiRequest('/api/quiz/generate', {
+    method: 'POST',
+    body: payload,
+  });
+}
+
+export function evaluateQuiz(payload) {
+  return apiRequest('/api/quiz/evaluate', {
+    method: 'POST',
+    body: payload,
+  });
+}

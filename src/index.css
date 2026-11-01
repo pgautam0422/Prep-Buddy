@@ -424,9 +424,17 @@ button:hover {
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: border-box;
+}
+
 :root {
   color: #ffffff;
   background-color: #0a0e27;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -435,10 +443,22 @@ body {
   min-height: 100vh;
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 15%, #0d0d15 40%, #050509 70%, #0f0f1e 100%);
   background-attachment: fixed;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6, p, span, a, li, button, input, label, div {
   color: inherit;
+}
+
+@media (max-width: 640px) {
+  body {
+    background-attachment: scroll;
+  }
+
+  .glass-card,
+  .glass-panel {
+    border-radius: 1rem;
+  }
 }
 
 .glass-card {

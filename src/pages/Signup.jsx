@@ -41,7 +41,7 @@ const Signup = ({ onAuthSuccess }) => {
           'radial-gradient(circle at top, rgba(20,20,20,0.95) 0%, rgba(10,10,14,0.95) 45%, rgba(5,5,8,0.95) 100%)',
       }}
     >
-      <div className="glass-card p-8 rounded-2xl shadow-xl w-full max-w-md border border-white/20">
+      <div className="glass-card p-5 sm:p-8 rounded-2xl shadow-xl w-full max-w-md mx-4 border border-white/20">
         <h2 className="text-2xl font-bold mb-6 text-center text-[#ffffff]">Sign Up</h2>
         <form onSubmit={handleSignup}>
           <div className="mb-4">

@@ -109,13 +109,13 @@ const Core = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="p-8"
+      className="p-4 sm:p-6 md:p-8"
     >
       <motion.h1
         initial={{ y: -20 }}
         animate={{ y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
-        className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent"
+        className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-center bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent"
       >
         Core Subjects
       </motion.h1>

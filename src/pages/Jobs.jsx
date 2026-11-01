@@ -100,19 +100,19 @@ const Jobs = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen p-6 md:p-8 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950"
+      className="min-h-screen p-4 sm:p-6 md:p-8 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950"
     >
       {/* ── Header ── */}
       <motion.div
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.5 }}
-        className="text-center mb-12"
+        className="text-center mb-8 sm:mb-12"
       >
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-600 bg-clip-text text-transparent">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-600 bg-clip-text text-transparent">
           💼 Discover Job Opportunities
         </h1>
-        <p className="text-gray-400 text-lg">Find your perfect role from top companies worldwide</p>
+        <p className="text-gray-400 text-base sm:text-lg">Find your perfect role from top companies worldwide</p>
       </motion.div>
 
       {/* ══════════════════════════════════════
@@ -126,7 +126,7 @@ const Jobs = () => {
           className="max-w-4xl mx-auto"
         >
           {/* Lock card */}
-          <div className="glass-card glass-hover p-12 text-center rounded-2xl border border-white/5 bg-slate-800/40 backdrop-blur-md">
+          <div className="glass-card glass-hover p-6 sm:p-8 md:p-12 text-center rounded-2xl border border-white/5 bg-slate-800/40 backdrop-blur-md">
             <motion.img
               animate={{ rotate: 360 }}
               transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
@@ -134,8 +134,8 @@ const Jobs = () => {
               alt="Locked"
               className="w-24 h-24 mx-auto mb-6"
             />
-            <h2 className="text-3xl font-bold text-white mb-4">Jobs Feature Locked</h2>
-            <p className="text-lg text-gray-400 mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Jobs Feature Locked</h2>
+            <p className="text-base sm:text-lg text-gray-400 mb-8">
               Complete 60% of your preparation to unlock exclusive job opportunities from top companies.
             </p>
 

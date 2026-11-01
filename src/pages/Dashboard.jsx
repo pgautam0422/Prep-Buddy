@@ -143,13 +143,13 @@ const Dashboard = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="p-8"
+      className="p-4 sm:p-6 md:p-8"
     >
       <motion.h1
         initial={{ y: -20 }}
         animate={{ y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
-        className="text-4xl font-bold mb-8 text-center text-white"
+        className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-center text-white"
       >
         Your Dashboard
       </motion.h1>
@@ -158,9 +158,9 @@ const Dashboard = () => {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.6 }}
-        className="grid grid-cols-1 md:grid-cols-4 gap-8"
+        className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8"
       >
-        <motion.div whileHover={{ scale: 1.05 }} className="glass-card glass-hover text-[#ffffff] p-8">
+        <motion.div whileHover={{ scale: 1.05 }} className="glass-card glass-hover text-[#ffffff] p-5 sm:p-8">
           <img src={dashboardIcon} alt="Progress" className="w-12 h-12 mb-4 icon-theme" />
           <h2 className="text-2xl font-semibold mb-4 text-[#4285f4]">Progress</h2>
           <div className="text-5xl font-bold mb-2">{profile.stats.completionRate}%</div>
@@ -174,24 +174,24 @@ const Dashboard = () => {
           </div>
         </motion.div>
 
-        <motion.div whileHover={{ scale: 1.05 }} className="glass-card glass-hover text-[#ffffff] p-8">
+        <motion.div whileHover={{ scale: 1.05 }} className="glass-card glass-hover text-[#ffffff] p-5 sm:p-8">
           <img src={checkmarkIcon} alt="Completed" className="w-12 h-12 mb-4 icon-theme" />
-          <h2 className="text-2xl font-semibold mb-4 text-[#34a853]">Completed Today</h2>
-          <div className="text-5xl font-bold">{profile.stats.completedToday}</div>
+          <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-[#34a853]">Completed Today</h2>
+          <div className="text-4xl sm:text-5xl font-bold">{profile.stats.completedToday}</div>
           <p className="text-sm mt-2">Goal progress: {goalProgress}%</p>
         </motion.div>
 
-        <motion.div whileHover={{ scale: 1.05 }} className="glass-card glass-hover text-[#ffffff] p-8">
+        <motion.div whileHover={{ scale: 1.05 }} className="glass-card glass-hover text-[#ffffff] p-5 sm:p-8">
           <img src={dashboardIcon} alt="Revision" className="w-12 h-12 mb-4 icon-theme" />
-          <h2 className="text-2xl font-semibold mb-4 text-[#ea4335]">Revision Queue</h2>
-          <div className="text-5xl font-bold">{profile.stats.revisionDueCount}</div>
+          <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-[#ea4335]">Revision Queue</h2>
+          <div className="text-4xl sm:text-5xl font-bold">{profile.stats.revisionDueCount}</div>
           <p className="text-sm mt-2">{profile.stats.bookmarkedCount} bookmarked topics</p>
         </motion.div>
 
-        <motion.div whileHover={{ scale: 1.05 }} className="glass-card glass-hover text-[#ffffff] p-8">
+        <motion.div whileHover={{ scale: 1.05 }} className="glass-card glass-hover text-[#ffffff] p-5 sm:p-8">
           <img src={fireIcon} alt="Streak" className="w-12 h-12 mb-4 icon-theme" />
-          <h2 className="text-2xl font-semibold mb-4 text-[#fbbc04]">Streak</h2>
-          <div className="text-5xl font-bold">{profile.stats.progressStreak} days</div>
+          <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-[#fbbc04]">Streak</h2>
+          <div className="text-4xl sm:text-5xl font-bold">{profile.stats.progressStreak} days</div>
           <p className="text-sm mt-2">Stay consistent to keep it going</p>
         </motion.div>
       </motion.div>
@@ -201,7 +201,7 @@ const Dashboard = () => {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.55, duration: 0.4 }}
-        className="mt-8 glass-card p-5 flex items-center justify-between"
+        className="mt-8 glass-card p-4 sm:p-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
       >
         <div>
           <p className="text-sm text-slate-400 mb-1">Study Accuracy</p>
@@ -209,8 +209,8 @@ const Dashboard = () => {
             Topics marked done <em>after</em> opening study material
           </p>
         </div>
-        <div className="flex items-center gap-4">
-          <div className="w-48 bg-slate-800 rounded-full h-3">
+        <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
+          <div className="w-full sm:w-48 bg-slate-800 rounded-full h-3">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${profile.stats.accuracy}%` }}
@@ -218,7 +218,7 @@ const Dashboard = () => {
               className="h-3 rounded-full bg-gradient-to-r from-amber-400 to-orange-500"
             />
           </div>
-          <span className="text-2xl font-bold text-amber-400">{profile.stats.accuracy}%</span>
+          <span className="text-xl sm:text-2xl font-bold text-amber-400">{profile.stats.accuracy}%</span>
         </div>
       </motion.div>
 
