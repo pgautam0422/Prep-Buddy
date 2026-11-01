@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
@@ -35,7 +36,7 @@ const AppContent = ({ authState, onAuthSuccess, onLogout }) => {
       {authState.user && !isAuthPage ? <Navbar user={authState.user} onLogout={onLogout} /> : null}
       <main className={authState.user && !isAuthPage ? 'pt-16' : ''}>
         <Routes>
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login onAuthSuccess={onAuthSuccess} />} />
           <Route path="/signup" element={<Signup onAuthSuccess={onAuthSuccess} />} />
           <Route
