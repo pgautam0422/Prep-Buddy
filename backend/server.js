@@ -8,6 +8,7 @@ import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
 import Groq from 'groq-sdk';
 import { catalogSeedData, catalogVersion } from './catalogSeedData.js';
+import { createQuizSession, evaluateQuizSession } from './quizService.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -22,6 +23,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
 const GROQ_API_KEY = process.env.GROQ_API_KEY || '';
 const RAPIDAPI_KEY = process.env.RAPIDAPI_KEY || '';
+const groqClient = GROQ_API_KEY ? new Groq({ apiKey: GROQ_API_KEY }) : null;
 
 const statsSchema = new mongoose.Schema(
   {
@@ -876,7 +878,7 @@ app.post('/chat', authenticateToken, async (req, res) => {
   }
 
   // ── Fallback if Groq key is not configured ────────────────────────────────
-  if (!GROQ_API_KEY) {
+  if (!groqClient) {
     return res.json({ reply: generateChatReply(question) });
   }
 
@@ -885,9 +887,8 @@ app.post('/chat', authenticateToken, async (req, res) => {
     const completionRate = user?.stats?.completionRate || 0;
     const streak = user?.stats?.progressStreak || 0;
 
-    const groq = new Groq({ apiKey: GROQ_API_KEY });
-    const completion = await groq.chat.completions.create({
-      model: 'llama-3.1-8b-instant',
+    const completion = await groqClient.chat.completions.create({
+      model: 'openai/gpt-oss-20b',
       messages: [
         {
           role: 'system',
@@ -910,6 +911,50 @@ Keep responses concise and actionable. Use bullet points when listing steps or m
   } catch (err) {
     console.error('Groq API error:', err.message);
     res.json({ reply: generateChatReply(question) });
+  }
+});
+
+app.post('/api/quiz/generate', authenticateToken, async (req, res) => {
+  const { subject, topic, difficulty, questionCount } = req.body || {};
+
+  if (!subject || !topic || !difficulty || !questionCount) {
+    return res.status(400).json({ error: 'Subject, topic, difficulty, and question count are required.' });
+  }
+
+  try {
+    const payload = await createQuizSession({
+      subject,
+      topic,
+      difficulty,
+      questionCount,
+      groqClient,
+    });
+
+    res.json(payload);
+  } catch (error) {
+    console.error('Quiz generation error:', error.message);
+    res.status(500).json({ error: error.message || 'Failed to generate quiz questions.' });
+  }
+});
+
+app.post('/api/quiz/evaluate', authenticateToken, async (req, res) => {
+  const { sessionId, answers } = req.body || {};
+
+  if (!sessionId) {
+    return res.status(400).json({ error: 'Quiz session is missing.' });
+  }
+
+  try {
+    const result = await evaluateQuizSession({
+      sessionId,
+      answers,
+      groqClient,
+    });
+
+    res.json(result);
+  } catch (error) {
+    console.error('Quiz evaluation error:', error.message);
+    res.status(500).json({ error: error.message || 'Failed to evaluate the quiz.' });
   }
 });
 

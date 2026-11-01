@@ -8,7 +8,9 @@ import DSA from './pages/DSA';
 import Core from './pages/Core';
 import Aptitude from './pages/Aptitude';
 import Jobs from './pages/Jobs';
+import ResumeAnalyzer from './pages/ResumeAnalyzer';
 import Chat from './pages/Chat';
+import AIQuiz from './pages/AIQuiz';
 import Navbar from './components/Navbar';
 import { ProfileProvider } from './context/ProfileContext';
 import {
@@ -79,10 +81,34 @@ const AppContent = ({ authState, onAuthSuccess, onLogout }) => {
             }
           />
           <Route
+            path="/resume-analyzer"
+            element={
+              <ProtectedRoute isReady={authState.isReady} isLoggedIn={Boolean(authState.user)}>
+                <ResumeAnalyzer />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/resume-analyzer/results"
+            element={
+              <ProtectedRoute isReady={authState.isReady} isLoggedIn={Boolean(authState.user)}>
+                <ResumeAnalyzer />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="/chat"
             element={
               <ProtectedRoute isReady={authState.isReady} isLoggedIn={Boolean(authState.user)}>
                 <Chat />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/ai-test"
+            element={
+              <ProtectedRoute isReady={authState.isReady} isLoggedIn={Boolean(authState.user)}>
+                <AIQuiz />
               </ProtectedRoute>
             }
           />

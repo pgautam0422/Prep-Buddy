@@ -12,13 +12,13 @@ import rocketIcon from '../assets/icons/rocket.svg';
 const Home = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#0f0f1e] to-[#0d0d15]">
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16">
         {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="glass-panel text-center text-white mb-16 p-12 relative overflow-hidden"
+          className="glass-panel text-center text-white mb-10 sm:mb-12 md:mb-16 p-6 sm:p-8 md:p-12 relative overflow-hidden"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-2xl"></div>
           <div className="relative z-10">
@@ -26,7 +26,7 @@ const Home = () => {
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="text-5xl md:text-7xl font-black mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#06b6d4] via-[#8b5cf6] to-[#ec4899]"
+            className="text-4xl sm:text-5xl md:text-7xl font-black mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#06b6d4] via-[#8b5cf6] to-[#ec4899]"
           >
           PREP BUDDY 
           </motion.h1>
@@ -34,7 +34,7 @@ const Home = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-xl md:text-2xl mb-4 max-w-3xl mx-auto text-[#e0e7ff] font-semibold"
+            className="text-lg sm:text-xl md:text-2xl mb-4 max-w-3xl mx-auto text-[#e0e7ff] font-semibold"
           >
             Your comprehensive companion for acing placement interviews.
           </motion.p>
@@ -42,7 +42,7 @@ const Home = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-[#cbd5e1]"
+            className="text-base sm:text-lg md:text-xl mb-8 max-w-2xl mx-auto text-[#cbd5e1]"
           >
             Start your journey with structured tracking of DSA, core subjects, and aptitude. Complete tasks daily to build momentum.
           </motion.p>
@@ -54,7 +54,7 @@ const Home = () => {
           >
             <Link
               to="/login"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-[#f59e0b] via-[#8b5cf6] to-[#06b6d4] hover:from-[#d97706] hover:via-[#7c3aed] hover:to-[#0891b2] text-white px-10 py-4 rounded-full font-bold text-lg shadow-2xl shadow-amber-500/50 transform hover:scale-110 transition-all duration-300 border border-white/20"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-[#f59e0b] via-[#8b5cf6] to-[#06b6d4] hover:from-[#d97706] hover:via-[#7c3aed] hover:to-[#0891b2] text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg shadow-2xl shadow-amber-500/50 transform hover:scale-110 transition-all duration-300 border border-white/20"
             >
               
               Start Your Journey

@@ -1,153 +1,135 @@
-# 📚 Prep Buddy — Placement Preparation Tracker
+# Prep Buddy – Placement Preparation Platform
 
-A full-stack placement preparation platform for engineering students. Track DSA, Core subjects, and Aptitude, get AI-powered study assistance, and discover real job listings after reaching 60% completion.
+Prep Buddy is a full-stack placement preparation platform for students who want to strengthen DSA, core CS fundamentals, aptitude, resume quality, and interview readiness in one place. It combines structured learning progress with AI-powered practice, job discovery, and personalized support.
 
----
+## Features
 
-## ✨ Features
+- Dashboard: Tracks overall preparation progress, completed topics, and study momentum across major learning sections.
+- DSA Preparation: Covers topic-wise data structures and algorithms practice with progress tracking.
+- Core Subjects: Includes structured learning and tracking for DBMS, Operating Systems, Computer Networks, and OOPS.
+- Aptitude: Supports quantitative and logical preparation with section-wise topic tracking.
+- Practice: AI-generated MCQ tests using Groq with subject, topic, difficulty, timer, auto-submit, score evaluation, and retake flow.
+- Job Discovery: Helps users search for opportunities, with real listings unlocked after the backend completion gate.
+- Resume Analyzer: Reviews uploaded or pasted resumes against a target role using PDF parsing and scoring logic.
+- AI Chatbot: Answers placement and study questions using Groq-powered conversational support.
+- Authentication: Includes signup, login, logout, protected routes, and JWT-based session handling.
 
-- **Progress Tracking** — DSA, Core CS, and Aptitude topics with completion tracking
-- **Streak System** — Daily streak to keep you consistent
-- **AI Chatbot** — Powered by Groq (Llama 3.1) for DSA, aptitude, and interview prep help
-- **Job Discovery** — Real jobs via JSearch API, unlocked after 60% completion
-- **PDF Resources** — Google Drive links for study material per topic
-- **Revision Reminders** — Bookmark topics for revision the next day
-- **Study Accuracy** — Tracks whether you open resources before marking topics done
+## Tech Stack
 
----
-
-## 🛠 Tech Stack
-
-| Layer | Technology |
-|-------|-----------|
-| Frontend | React 19, Tailwind CSS, Framer Motion, Vite |
+| Layer | Technologies |
+| --- | --- |
+| Frontend | React 19, Vite, Tailwind CSS, Framer Motion, React Router |
 | Backend | Node.js, Express |
-| Database | MongoDB Atlas (Mongoose) |
-| AI Chat | Groq API (llama-3.1-8b-instant) |
-| Jobs | JSearch via RapidAPI |
-| Auth | JWT (jsonwebtoken + bcryptjs) |
+| Database | MongoDB with Mongoose |
+| AI Integration | Groq SDK (`openai/gpt-oss-20b`) |
+| Deployment | Vercel frontend, separate Express backend hosting |
 
----
+## Project Structure
 
-## 🚀 Setup Instructions
-
-### Prerequisites
-- Node.js 18+ installed
-- A MongoDB Atlas account (free)
-- A Groq API key (free) — https://console.groq.com
-- A RapidAPI key for JSearch (free tier) — https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch
-
----
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/YOUR_USERNAME/prep-buddy.git
-cd prep-buddy
-```
-
----
-
-### 2. Frontend Setup
-
-```bash
-# Install dependencies
-npm install
-
-# Create your environment file
-cp .env.example .env
-```
-
-Edit `.env` and set:
-```
-VITE_API_URL=http://localhost:3000
-```
-
----
-
-### 3. Backend Setup
-
-```bash
-cd backend
-
-# Install dependencies
-npm install
-
-# Create your environment file
-cp .env.example .env
-```
-
-Edit `backend/.env` with your own credentials:
-```
-MONGODB_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/?appName=YourApp
-JWT_SECRET=pick_any_long_random_string_here
-FRONTEND_URL=http://localhost:5173
-GROQ_API_KEY=gsk_your_groq_api_key_here
-RAPIDAPI_KEY=your_rapidapi_key_here
-```
-
-#### How to get each key:
-
-| Key | Where to get |
-|-----|-------------|
-| `MONGODB_URI` | [MongoDB Atlas](https://cloud.mongodb.com) → Create free cluster → Connect → Drivers → copy URI |
-| `JWT_SECRET` | Any random string, e.g. run: `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"` |
-| `GROQ_API_KEY` | [console.groq.com](https://console.groq.com) → API Keys → Create key |
-| `RAPIDAPI_KEY` | [RapidAPI JSearch](https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch) → Subscribe Free → copy key |
-
----
-
-### 4. Run the App
-
-Open **two terminals**:
-
-**Terminal 1 — Backend:**
-```bash
-cd backend
-node server.js
-```
-You should see: `Backend running at http://localhost:3000`
-
-**Terminal 2 — Frontend:**
-```bash
-npm run dev
-```
-You should see: `VITE ready at http://localhost:5173`
-
-Open **http://localhost:5173** in your browser.
-
----
-
-## 📁 Project Structure
-
-```
-prep-buddy/
+```text
+Prep-Buddy/
+├── README.md
+├── index.html
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+├── vercel.json
 ├── src/
-│   ├── pages/          # Dashboard, DSA, Core, Aptitude, Jobs, Chat
-│   ├── components/     # Navbar, JobCard, SkeletonCard
-│   ├── context/        # ProfileContext (global state)
-│   ├── lib/            # api.js (centralized fetch helper)
-│   └── data/           # dsaData.js, coreData.js, aptitudeData.js
+│   ├── App.jsx
+│   ├── components/
+│   ├── context/
+│   ├── data/
+│   ├── lib/
+│   └── pages/
 ├── backend/
-│   ├── server.js       # Express API server
-│   ├── catalogSeedData.js  # Topic catalog seeder
-│   └── .env.example    # Environment variable template
-├── .env.example        # Frontend env template
-└── README.md
+│   ├── catalogSeedData.js
+│   ├── package.json
+│   ├── quizService.js
+│   └── server.js
+└── .env
 ```
 
----
+## Installation & Setup
 
-## 🔒 Environment Variables
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd Prep-Buddy
+   ```
+2. Install frontend dependencies:
+   ```bash
+   npm install
+   ```
+3. Install backend dependencies:
+   ```bash
+   cd backend
+   npm install
+   ```
+4. Configure environment variables:
+   - Root `.env` for frontend:
+     ```env
+     VITE_API_URL=http://localhost:3000
+     ```
+   - `backend/.env` for backend:
+     ```env
+     MONGODB_URI=mongodb+srv://<username>:<password>@<cluster-url>
+     JWT_SECRET=your_long_random_secret
+     FRONTEND_URL=http://localhost:5173
+     GROQ_API_KEY=your_groq_api_key
+     RAPIDAPI_KEY=your_rapidapi_key
+     ```
+5. Start the backend:
+   ```bash
+   cd backend
+   npm start
+   ```
+6. Start the frontend:
+   ```bash
+   cd ..
+   npm run dev
+   ```
+   The app runs on `http://localhost:5173` and the backend listens on `http://localhost:3000` by default.
 
-**Never commit `.env` files.** They are already in `.gitignore`.  
-Always use the `.env.example` files as templates.
+## Environment Variables
 
----
+| Variable | Purpose |
+| --- | --- |
+| `VITE_API_URL` | Frontend base URL for the Express API |
+| `MONGODB_URI` | MongoDB connection string used by the backend |
+| `JWT_SECRET` | Secret used to sign and verify JWT tokens |
+| `FRONTEND_URL` | Frontend origin used by the backend configuration |
+| `GROQ_API_KEY` | API key for Groq-powered chatbot and quiz features |
+| `RAPIDAPI_KEY` | Key used for JSearch job-search requests |
+| `PORT` | Optional backend port override; defaults to `3000` |
 
-## 📝 Notes
+## API Overview
 
-- Jobs are locked until the user reaches **60% overall completion**
-- Below 60%, the app shows demo Indian job listings (Infosys, TCS, Zomato, etc.)
-- The AI chatbot is aware of the user's progress and streak for personalised responses
-- MongoDB stores user progress, streaks, and revision reminders per account
+| Method | Endpoint | Purpose | Auth |
+| --- | --- | --- | --- |
+| `GET` | `/health` | Backend health and MongoDB status | No |
+| `POST` | `/register` | Create a new user and return a JWT | No |
+| `POST` | `/login` | Authenticate a user | No |
+| `GET` | `/profile` | Get authenticated user data | Yes |
+| `GET` | `/catalog` | Fetch topic catalog data | Yes |
+| `GET` | `/topics` | Fetch DSA, core, and aptitude topics | Yes |
+| `PUT` | `/progress/:section` | Update learning progress | Yes |
+| `PATCH` | `/settings` | Update user settings | Yes |
+| `POST` | `/chat` | Ask the AI placement assistant a question | Yes |
+| `POST` | `/api/quiz/generate` | Generate a practice-test session | Yes |
+| `POST` | `/api/quiz/evaluate` | Evaluate quiz answers and return scores | Yes |
+| `POST` | `/search` | Search for jobs, with demo fallback below the completion gate | Yes |
+
+## Deployment
+
+The frontend is configured for Vercel using `vercel.json` for SPA routing. The backend is a standalone Express service designed to run separately, typically on Render or another Node hosting platform.
+
+## Future Enhancements
+
+- More advanced analytics and historical performance dashboards.
+- Expanded DSA, core, and aptitude question banks.
+- Improved resume analysis and ATS-style job-fit scoring.
+- Smarter daily revision reminders and personalized study recommendations.
+
+## Author / Contributors
+
+The repository currently reflects the implementation present in this codebase. No additional contributor metadata was found in the project files beyond the existing repository ownership and implementation details.
